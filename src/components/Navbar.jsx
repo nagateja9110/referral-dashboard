@@ -17,9 +17,14 @@ export default function Navbar() {
       <nav aria-label="Primary" className="navbar-nav">
         <Link to="/">Home</Link>
       </nav>
-      <button type="button" className="logout-button" onClick={handleLogout}>
-        Log out
-      </button>
+      <div className="navbar-actions">
+        <button type="button" className="try-free-button">
+          Try for free
+        </button>
+        <button type="button" className="logout-button" onClick={handleLogout}>
+          Log out
+        </button>
+      </div>
     </header>
   );
 }

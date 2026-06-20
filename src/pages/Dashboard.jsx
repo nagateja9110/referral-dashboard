@@ -7,6 +7,7 @@ import { fetchReferrals } from '../api';
 import { formatDate, formatProfit } from '../format';
 
 const PAGE_SIZE = 10;
+const METRIC_ICONS = ['$', '▣', '⧉', '☺', '%', '⧈', '▦', '⇄'];
 
 function normalizeData(responseJson) {
   const root = responseJson?.data ?? responseJson ?? {};
@@ -92,65 +93,79 @@ export default function Dashboard() {
 
         {!loading && !error && (
           <>
-            <section aria-label="Overview metrics" role="region" className="overview-section">
+            <section aria-label="Overview metrics" role="region" className="card overview-section">
               <h2>Overview</h2>
               <div className="metrics-grid">
-                {metrics.map((metric) => (
+                {metrics.map((metric, index) => (
                   <div key={metric.id} className="metric-card">
-                    <span className="metric-label">{metric.label}</span>
+                    <span className="metric-icon">{METRIC_ICONS[index % METRIC_ICONS.length]}</span>
                     <span className="metric-value">{metric.value}</span>
+                    <span className="metric-label">{metric.label}</span>
                   </div>
                 ))}
               </div>
             </section>
 
-            <section aria-label="Service summary" className="service-summary-section">
+            <section aria-label="Service summary" className="card service-summary-section">
               <h2>Service summary</h2>
-              <dl className="service-summary-list">
-                <dt>Service</dt>
-                <dd>{serviceSummary.service}</dd>
-                <dt>Your Referrals</dt>
-                <dd>{serviceSummary.yourReferrals}</dd>
-                <dt>Active Referrals</dt>
-                <dd>{serviceSummary.activeReferrals}</dd>
-                <dt>Total Ref. Earnings</dt>
-                <dd>{serviceSummary.totalRefEarnings}</dd>
-              </dl>
+              <div className="service-summary-list">
+                <div className="summary-item">
+                  <span className="summary-label">Service</span>
+                  <span className="summary-value">{serviceSummary.service}</span>
+                </div>
+                <div className="summary-item">
+                  <span className="summary-label">Your Referrals</span>
+                  <span className="summary-value">{serviceSummary.yourReferrals}</span>
+                </div>
+                <div className="summary-item">
+                  <span className="summary-label">Active Referrals</span>
+                  <span className="summary-value">{serviceSummary.activeReferrals}</span>
+                </div>
+                <div className="summary-item">
+                  <span className="summary-label">Total Ref. Earnings</span>
+                  <span className="summary-value">{serviceSummary.totalRefEarnings}</span>
+                </div>
+              </div>
             </section>
 
-            <section aria-label="Share referral" className="share-referral-section">
+            <section aria-label="Share referral" className="card share-referral-section">
               <h2>Refer friends and earn more</h2>
-              <div className="share-field">
-                <label htmlFor="referral-link">Your Referral Link</label>
-                <div className="share-field-row">
-                  <input id="referral-link" type="text" readOnly value={referral.link || ''} />
-                  <button type="button" onClick={() => copyToClipboard(referral.link || '')}>
-                    Copy
-                  </button>
+              <div className="share-fields">
+                <div className="share-field">
+                  <label htmlFor="referral-link">Your Referral Link</label>
+                  <div className="share-field-row">
+                    <input id="referral-link" type="text" readOnly value={referral.link || ''} />
+                    <button type="button" onClick={() => copyToClipboard(referral.link || '')}>
+                      Copy
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <div className="share-field">
-                <label htmlFor="referral-code">Your Referral Code</label>
-                <div className="share-field-row">
-                  <input id="referral-code" type="text" readOnly value={referral.code || ''} />
-                  <button type="button" onClick={() => copyToClipboard(referral.code || '')}>
-                    Copy
-                  </button>
+                <div className="share-field">
+                  <label htmlFor="referral-code">Your Referral Code</label>
+                  <div className="share-field-row">
+                    <input id="referral-code" type="text" readOnly value={referral.code || ''} />
+                    <button type="button" onClick={() => copyToClipboard(referral.code || '')}>
+                      Copy
+                    </button>
+                  </div>
                 </div>
               </div>
             </section>
 
-            <section className="referrals-section">
+            <section className="card referrals-section">
               <h2>All referrals</h2>
               <div className="referrals-controls">
-                <input
-                  type="text"
-                  placeholder="Name or service…"
-                  aria-label="Search referrals"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-                <label>
+                <label className="search-field">
+                  Search
+                  <input
+                    type="text"
+                    placeholder="Name or service…"
+                    aria-label="Search referrals"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                </label>
+                <label className="sort-field">
                   Sort by date
                   <select value={sort} onChange={(e) => setSort(e.target.value)}>
                     <option value="desc">Newest first</option>
@@ -187,7 +202,7 @@ export default function Dashboard() {
                         <td>{row.name}</td>
                         <td>{row.serviceName}</td>
                         <td>{formatDate(row.date)}</td>
-                        <td>{formatProfit(row.profit)}</td>
+                        <td className="profit-cell">{formatProfit(row.profit)}</td>
                       </tr>
                     ))
                   )}

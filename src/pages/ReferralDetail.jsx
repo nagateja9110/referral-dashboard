@@ -60,23 +60,43 @@ export default function ReferralDetail() {
     <>
       <Navbar />
       <main className="referral-detail-page">
+        <Link to="/" className="back-link">
+          ← Back to dashboard
+        </Link>
         {loading && <p>Loading...</p>}
         {!loading && notFound && <h1>Referral not found</h1>}
         {!loading && !notFound && referral && (
           <>
             <h1>Referral Details</h1>
-            <h2>{referral.name}</h2>
-            <dl>
-              <dt>Referral ID</dt>
-              <dd>{referral.id}</dd>
-              <dt>Service Name</dt>
-              <dd>{referral.serviceName}</dd>
-              <dt>Date</dt>
-              <dd>{formatDate(referral.date)}</dd>
-              <dt>Profit</dt>
-              <dd>{formatProfit(referral.profit)}</dd>
-            </dl>
-            <Link to="/">← Back to dashboard</Link>
+            <p className="detail-subtitle">Full information for this referral partner.</p>
+            <div className="card detail-card">
+              <div className="detail-card-header">
+                <h2>{referral.name}</h2>
+                <span className="service-badge">{referral.serviceName}</span>
+              </div>
+              <dl>
+                <div className="detail-row">
+                  <dt>Referral ID</dt>
+                  <dd>{referral.id}</dd>
+                </div>
+                <div className="detail-row">
+                  <dt>Name</dt>
+                  <dd>{referral.name}</dd>
+                </div>
+                <div className="detail-row">
+                  <dt>Service Name</dt>
+                  <dd>{referral.serviceName}</dd>
+                </div>
+                <div className="detail-row">
+                  <dt>Date</dt>
+                  <dd>{formatDate(referral.date)}</dd>
+                </div>
+                <div className="detail-row">
+                  <dt>Profit</dt>
+                  <dd>{formatProfit(referral.profit)}</dd>
+                </div>
+              </dl>
+            </div>
           </>
         )}
       </main>
