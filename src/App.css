@@ -1,0 +1,288 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: #2b2d77;
+  color: #fff;
+}
+
+.navbar-brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+.navbar-nav a {
+  color: #fff;
+  margin-right: 1rem;
+  text-decoration: none;
+}
+
+.logout-button {
+  background: #fff;
+  color: #2b2d77;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.footer {
+  padding: 1.5rem;
+  text-align: center;
+  border-top: 1px solid #e2e2e2;
+  color: #555;
+}
+
+.footer-brand {
+  font-weight: 700;
+  display: block;
+}
+
+.footer-nav a {
+  margin: 0 0.5rem;
+  color: #2b2d77;
+}
+
+.footer-copyright {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f5fb;
+}
+
+.login-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 360px;
+}
+
+.brand-title {
+  color: #2b2d77;
+  margin-bottom: 0.25rem;
+}
+
+.tagline {
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.form-field {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field label {
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.form-field input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-error {
+  color: #c0392b;
+  margin-bottom: 1rem;
+}
+
+.login-card button[type='submit'] {
+  width: 100%;
+  padding: 0.6rem;
+  background: #2b2d77;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.dashboard-page,
+.referral-detail-page,
+.not-found-page {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.dashboard-header p {
+  color: #555;
+}
+
+.error-message {
+  color: #c0392b;
+}
+
+.overview-section,
+.service-summary-section,
+.share-referral-section,
+.referrals-section {
+  margin-top: 2rem;
+}
+
+.metrics-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.metric-card {
+  background: #f4f5fb;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.metric-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2b2d77;
+}
+
+.service-summary-list {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5rem 1rem;
+}
+
+.service-summary-list dt {
+  font-weight: 600;
+}
+
+.share-field {
+  margin-bottom: 1rem;
+}
+
+.share-field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.share-field-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.share-field-row input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.share-field-row button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background: #2b2d77;
+  color: #fff;
+  cursor: pointer;
+}
+
+.referrals-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.referrals-controls input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-width: 220px;
+}
+
+.referrals-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.referrals-table th,
+.referrals-table td {
+  text-align: left;
+  padding: 0.6rem;
+  border-bottom: 1px solid #eee;
+}
+
+.referrals-table tbody tr {
+  cursor: pointer;
+}
+
+.referrals-table tbody tr:hover {
+  background: #f4f5fb;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pagination-controls {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.pagination-controls button {
+  padding: 0.4rem 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.pagination-controls button.active {
+  background: #2b2d77;
+  color: #fff;
+  border-color: #2b2d77;
+}
+
+.pagination-controls button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.referral-detail-page dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5rem 1rem;
+  margin: 1.5rem 0;
+}
+
+.referral-detail-page dt {
+  font-weight: 600;
+}
+
+.not-found-page {
+  text-align: center;
+  padding-top: 4rem;
+}
