@@ -4,18 +4,33 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { signIn } from '../api';
 
 export default function Login() {
+  const [mode, setMode] = useState('signin');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [notice, setNotice] = useState('');
   const navigate = useNavigate();
 
   if (Cookies.get('jwt_token')) {
     return <Navigate to="/" replace />;
   }
 
+  function toggleMode() {
+    setMode((m) => (m === 'signin' ? 'signup' : 'signin'));
+    setError('');
+    setNotice('');
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     setError('');
+    setNotice('');
+
+    if (mode === 'signup') {
+      setNotice('Sign-up isn’t available yet — please contact an admin for account access.');
+      return;
+    }
+
     try {
       const responseJson = await signIn(email, password);
       const token = responseJson.data.token;
@@ -30,7 +45,11 @@ export default function Login() {
     <main className="login-page">
       <div className="login-card">
         <h1 className="brand-title">Go Business</h1>
-        <p className="tagline">Sign in to open your referral dashboard.</p>
+        <p className="tagline">
+          {mode === 'signin'
+            ? 'Sign in to open your referral dashboard.'
+            : 'Create an account to get started.'}
+        </p>
         <form onSubmit={handleSubmit}>
           <div className="form-field">
             <label htmlFor="email">Email</label>
@@ -56,8 +75,30 @@ export default function Login() {
               {error}
             </p>
           )}
-          <button type="submit">Sign in</button>
+          {notice && (
+            <p className="login-notice" role="status">
+              {notice}
+            </p>
+          )}
+          <button type="submit">{mode === 'signin' ? 'Sign in' : 'Sign up'}</button>
         </form>
+        <p className="auth-toggle">
+          {mode === 'signin' ? (
+            <>
+              Don&apos;t have an account?{' '}
+              <button type="button" className="link-button" onClick={toggleMode}>
+                Sign up
+              </button>
+            </>
+          ) : (
+            <>
+              Already have an account?{' '}
+              <button type="button" className="link-button" onClick={toggleMode}>
+                Sign in
+              </button>
+            </>
+          )}
+        </p>
       </div>
     </main>
   );
