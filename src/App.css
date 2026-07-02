@@ -141,32 +141,6 @@
   margin-bottom: 1rem;
 }
 
-.login-notice {
-  color: var(--text-gray);
-  background: var(--bg-page);
-  border-radius: 8px;
-  padding: 0.6rem 0.75rem;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-}
-
-.auth-toggle {
-  margin: 1rem 0 0;
-  text-align: center;
-  font-size: 0.9rem;
-  color: var(--text-gray);
-}
-
-.link-button {
-  background: none;
-  border: none;
-  padding: 0;
-  color: var(--indigo);
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: underline;
-}
-
 .login-card button[type='submit'] {
   width: 100%;
   padding: 0.65rem;
