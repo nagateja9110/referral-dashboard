@@ -7,6 +7,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [submitting, setSubmitting] = useState(false);
   const navigate = useNavigate();
 
   if (Cookies.get('jwt_token')) {
@@ -16,6 +17,7 @@ export default function Login() {
   async function handleSubmit(e) {
     e.preventDefault();
     setError('');
+    setSubmitting(true);
     try {
       const responseJson = await signIn(email, password);
       const token = responseJson.data.token;
@@ -23,6 +25,7 @@ export default function Login() {
       navigate('/');
     } catch (err) {
       setError(err.message || 'Invalid email or password');
+      setSubmitting(false);
     }
   }
 
@@ -56,7 +59,9 @@ export default function Login() {
               {error}
             </p>
           )}
-          <button type="submit">Sign in</button>
+          <button type="submit" disabled={submitting}>
+            {submitting ? <span className="spinner spinner-light" aria-hidden="true" /> : 'Sign in'}
+          </button>
         </form>
       </div>
     </main>

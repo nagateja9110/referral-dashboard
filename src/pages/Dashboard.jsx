@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Loader from '../components/Loader';
 import { fetchReferrals } from '../api';
 import { formatDate, formatProfit } from '../format';
 
@@ -84,7 +85,7 @@ export default function Dashboard() {
           <p>Track your referrals, earnings, and partner activity in one place.</p>
         </header>
 
-        {loading && <p>Loading...</p>}
+        {loading && <Loader label="Loading referrals…" />}
         {error && (
           <p role="alert" className="error-message">
             {error}

@@ -150,6 +150,52 @@
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-card button[type='submit']:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 2rem 0;
+  color: var(--text-gray);
+  font-size: 0.95rem;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border);
+  border-top-color: var(--indigo);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+.spinner-light {
+  width: 16px;
+  height: 16px;
+  border-color: rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 1.6s;
+  }
 }
 
 .dashboard-page,
@@ -159,6 +205,7 @@
   max-width: 1000px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
+  flex: 1;
 }
 
 .dashboard-page,

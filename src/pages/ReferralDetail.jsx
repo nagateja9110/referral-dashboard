@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import { Link, useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Loader from '../components/Loader';
 import { fetchReferrals } from '../api';
 import { formatDate, formatProfit } from '../format';
 
@@ -63,7 +64,7 @@ export default function ReferralDetail() {
         <Link to="/" className="back-link">
           ← Back to dashboard
         </Link>
-        {loading && <p>Loading...</p>}
+        {loading && <Loader label="Loading referral…" />}
         {!loading && notFound && <h1>Referral not found</h1>}
         {!loading && !notFound && referral && (
           <>
