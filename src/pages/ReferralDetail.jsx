@@ -64,7 +64,11 @@ export default function ReferralDetail() {
         <Link to="/" className="back-link">
           ← Back to dashboard
         </Link>
-        {loading && <Loader label="Loading referral…" />}
+        {loading && (
+          <div className="loader-page">
+            <Loader label="Loading referral…" />
+          </div>
+        )}
         {!loading && notFound && <h1>Referral not found</h1>}
         {!loading && !notFound && referral && (
           <>

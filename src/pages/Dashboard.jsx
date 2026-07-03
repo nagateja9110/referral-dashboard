@@ -85,7 +85,11 @@ export default function Dashboard() {
           <p>Track your referrals, earnings, and partner activity in one place.</p>
         </header>
 
-        {loading && <Loader label="Loading referrals…" />}
+        {loading && (
+          <div className="loader-page">
+            <Loader label="Loading referrals…" />
+          </div>
+        )}
         {error && (
           <p role="alert" className="error-message">
             {error}
